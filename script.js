@@ -1,18 +1,21 @@
 let volume = 0
 
-let tag = document.querySelector("i")
+document.querySelectorAll(".music").forEach(musicBlock => {
+    let icon = musicBlock.querySelector("i");
+    let audio = musicBlock.querySelector("audio");
 
-tag.addEventListener("click", function() {
-    if (volume==0) {
-        document.querySelector("audio").play();
-        volume++;
-        document.querySelector("i").style.opacity="1";
-    }
-    else {
-        document.querySelector("audio").pause();
-        volume--;
-        document.querySelector("i").style.opacity=".5";
-    }
-})
+    icon.addEventListener("click", () => {
+        if (audio.paused) {
+            document.querySelectorAll("audio").forEach(a => {
+                a.pause();
+            });
+            document.querySelectorAll(".music i").forEach(i => i.style.opacity = ".5");
 
-console.log("hello")
+            audio.play();
+            icon.style.opacity = "1";
+        } else {
+            audio.pause();
+            icon.style.opacity = ".5";
+        }
+    });
+});
