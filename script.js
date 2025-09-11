@@ -19,3 +19,15 @@ document.querySelectorAll(".music").forEach(musicBlock => {
         }
     });
 });
+
+
+let a = document.querySelector(".Legends_name")
+
+const b = []
+
+b.push(...a.textContent)
+a.innerHTML =""
+for (let i = 0; i<b.length;i++) {
+    setTimeout(() => {a.append(b[i]),console.log(b[i])},300*i)
+}
+

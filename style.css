@@ -61,11 +61,12 @@ article {
     font-family: PixelElegance;
     white-space: nowrap;
     overflow: hidden;
+    display:inline;
     animation: typewriter 5s steps(13) infinite alternate,
                 blink 1100ms steps(1) infinite normal;
 }
 
- @keyframes typewriter {
+/*@keyframes typewriter {
             from {
                 width: 0%;
             }
@@ -85,3 +86,4 @@ article {
             }
         }
 
+*/
