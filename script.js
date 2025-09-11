@@ -21,13 +21,30 @@ document.querySelectorAll(".music").forEach(musicBlock => {
 });
 
 
-let a = document.querySelector(".Legends_name")
+document.querySelectorAll(".animate").forEach(animateBlock => {
+    let textAnimate = animateBlock.querySelector("i");
+    if (!textAnimate) return;
 
-const b = []
+    let scoreAnimate = 0;
+    let a = animateBlock.closest(".Legends_portfolio").querySelector(".Legends_name");
+    let originalText = a.textContent;
+    let chars = [...originalText];
 
-b.push(...a.textContent)
-a.innerHTML =""
-for (let i = 0; i<b.length;i++) {
-    setTimeout(() => {a.append(b[i]),console.log(b[i])},300*i)
-}
+    textAnimate.addEventListener("click", () => {
+        if (scoreAnimate === 0) {
+            a.innerHTML = "";
+            chars.forEach((ch, i) => {
+                setTimeout(() => {
+                    a.innerHTML += ch;
+                }, 300 * i);
+            });
+            textAnimate.style.opacity = "1";
+            scoreAnimate++;
+        } else {
+            console.log(originalText);
+            textAnimate.style.opacity = ".5";
+            scoreAnimate = 0;
+        }
+    });
+});
 

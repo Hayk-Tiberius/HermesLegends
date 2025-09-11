@@ -51,9 +51,16 @@ article {
     border: 0.3rem white solid;
 }
 
+.buttons {
+    display: flex;
+    gap: 5rem;
+}
+
+
 .Legends_photo {
     height: 58%;
 }
+
 
 .Legends_name {
     color: white;
