@@ -49,6 +49,7 @@ article {
     background-color: black;
     border-radius: 1rem;
     border: 0.3rem white solid;
+    overflow: hidden;
 }
 
 .buttons {
@@ -59,8 +60,13 @@ article {
 
 .Legends_photo {
     height: 58%;
+  
 }
 
+.profile {
+    max-width: 23rem;
+    overflow: hidden;
+}
 
 .Legends_name {
     color: white;
