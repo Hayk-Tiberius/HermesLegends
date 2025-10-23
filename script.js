@@ -22,29 +22,37 @@ document.querySelectorAll(".music").forEach(musicBlock => {
 
 
 document.querySelectorAll(".animate").forEach(animateBlock => {
-    let textAnimate = animateBlock.querySelector("i");
+    const textAnimate = animateBlock.querySelector("i");
     if (!textAnimate) return;
 
-    let scoreAnimate = 0;
-    let a = animateBlock.closest(".Legends_portfolio").querySelector(".Legends_name");
-    let originalText = a.textContent;
-    let chars = [...originalText];
+    const a = animateBlock.closest(".Legends_portfolio").querySelector(".Legends_name");
+    const originalText = a.textContent;
+    const chars = [...originalText];
 
-    textAnimate.addEventListener("click", () => {
-        if (scoreAnimate === 0) {
-            a.innerHTML = "";
+    let isAnimating = false; 
+
+    textAnimate.addEventListener("click", async () => {
+        if (isAnimating) return; 
+
+        if (textAnimate.style.opacity === "1") {
+            textAnimate.style.opacity = ".5";
+            a.textContent = originalText;
+            return;
+        }
+
+        textAnimate.style.opacity = "1";
+        a.textContent = "";
+        isAnimating = true;
+
+        await new Promise(resolve => {
             chars.forEach((ch, i) => {
                 setTimeout(() => {
-                    a.innerHTML += ch;
+                    a.textContent += ch;
+                    if (i === chars.length - 1) resolve(); 
                 }, 300 * i);
             });
-            textAnimate.style.opacity = "1";
-            scoreAnimate++;
-        } else {
-            console.log(originalText);
-            textAnimate.style.opacity = ".5";
-            scoreAnimate = 0;
-        }
+        });
+
+        isAnimating = false; 
     });
 });
-
